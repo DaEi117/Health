@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Health – Kategorien</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <h1>Kategorien</h1>
+      <div class="subtitle">Hinzufügen, umbenennen, archivieren</div>
+    </div>
+    <nav class="nav">
+      <a class="navlink" href="./index.html">Eintrag</a>
+      <a class="navlink" href="./stats.html">Statistik</a>
+      <a class="navlink active" href="./categories.html">Kategorien</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <label class="label" for="newCat">Neue Kategorie</label>
+        <input id="newCat" class="input" placeholder="z.B. Fiebergefühl" />
+        <button id="addCat" class="btn primary">Hinzufügen</button>
+      </div>
+
+      <div class="hint">Archivierte Kategorien werden in der Eingabe nicht mehr angezeigt, bleiben aber für alte Daten erhalten.</div>
+
+      <div id="catList"></div>
+
+      <div class="actions">
+        <button id="restoreDefaults" class="btn">Defaults wiederherstellen</button>
+      </div>
+
+      <div class="hint" id="catStatus"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./categories.js"></script>
+</body>
+</html>
