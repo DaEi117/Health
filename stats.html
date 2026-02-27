@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Health – Statistik</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <h1>Statistik</h1>
+      <div class="subtitle">Verlauf, kumuliert, Summe im Zeitraum</div>
+    </div>
+    <nav class="nav">
+      <a class="navlink" href="/">Eintrag</a>
+      <a class="navlink active" href="/stats.html">Statistik</a>
+      <a class="navlink" href="/categories.html">Kategorien</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Chart 1: Zeitverlauf -->
+    <section class="card">
+      <div class="filters">
+        <div class="row">
+          <label class="label" for="category">Kategorie</label>
+          <select id="category" class="input"></select>
+        </div>
+
+        <div class="row">
+          <label class="label" for="mode">Ansicht</label>
+          <select id="mode" class="input">
+            <option value="daily">Täglich</option>
+            <option value="cumulative">Kumuliert (laufende Summe)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="label" for="chartType">Diagramm</label>
+          <select id="chartType" class="input">
+            <option value="line">Linie</option>
+            <option value="bar">Balken</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="label" for="from">Von</label>
+          <input id="from" type="date" class="input" />
+        </div>
+
+        <div class="row">
+          <label class="label" for="to">Bis</label>
+          <input id="to" type="date" class="input" />
+        </div>
+
+        <div class="row">
+          <label class="label" for="preset">Preset</label>
+          <select id="preset" class="input">
+            <option value="custom">Custom</option>
+            <option value="7">Letzte 7 Tage</option>
+            <option value="30">Letzte 30 Tage</option>
+            <option value="90">Letzte 90 Tage</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="label" for="ma7">7-Tage-Mittel</label>
+          <input id="ma7" type="checkbox" />
+        </div>
+      </div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="chartWrap">
+        <div class="chartTitle" id="chartTitle"></div>
+        <div id="chart"></div>
+      </div>
+    </section>
+
+    <!-- Chart 2: Kategorien-Summen im Zeitraum -->
+    <section class="card">
+      <div class="filters">
+        <div class="row">
+          <label class="label" for="catFrom">Von</label>
+          <input id="catFrom" type="date" class="input" />
+        </div>
+
+        <div class="row">
+          <label class="label" for="catTo">Bis</label>
+          <input id="catTo" type="date" class="input" />
+        </div>
+
+        <div class="row">
+          <label class="label" for="catPreset">Preset</label>
+          <select id="catPreset" class="input">
+            <option value="sync">Wie oben</option>
+            <option value="custom">Custom</option>
+            <option value="7">Letzte 7 Tage</option>
+            <option value="30">Letzte 30 Tage</option>
+            <option value="90">Letzte 90 Tage</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="chartWrap">
+        <div class="chartTitle" id="catChartTitle"></div>
+        <div id="catChart"></div>
+        <div class="hint">Y-Achse: Summe der Scores im Zeitraum. X-Achse: Kategorien.</div>
+      </div>
+    </section>
+
+    <!-- Heatmap -->
+    <section class="card">
+      <h2 class="h2">Heatmap (Tages-Gesamtscore)</h2>
+      <div class="hint">Je höher die Summe aller Kategorien, desto röter der Tag. Fehlende Tage bleiben leer.</div>
+      <div id="heatmap"></div>
+    </section>
+
+    <!-- Export -->
+    <section class="card">
+      <h2 class="h2">Export</h2>
+      <div class="actions">
+        <button id="exportJson" class="btn">JSON Export</button>
+        <button id="exportCsvWide" class="btn">CSV Export (wide)</button>
+        <button id="exportCsvLong" class="btn">CSV Export (long)</button>
+        <label class="btn fileBtn">
+          JSON Import
+          <input id="importJson" type="file" accept="application/json" hidden>
+        </label>
+      </div>
+      <div class="hint" id="exportStatus"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/stats.js"></script>
+</body>
+</html>

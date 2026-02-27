@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Health Tracker</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <h1>Health</h1>
+      <div class="subtitle" id="subtitle"></div>
+    </div>
+    <nav class="nav">
+      <a class="navlink active" href="/">Eintrag</a>
+      <a class="navlink" href="/stats.html">Statistik</a>
+      <a class="navlink" href="/categories.html">Kategorien</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <label class="label" for="date">Datum</label>
+        <input id="date" type="date" class="input" />
+      </div>
+
+      <div class="grid" id="symptomGrid" aria-live="polite"></div>
+
+      <div class="actions">
+        <button id="saveBtn" class="btn primary">Speichern</button>
+        <button id="deleteBtn" class="btn">Löschen</button>
+        <button id="resetBtn" class="btn">Auf 0 setzen</button>
+      </div>
+
+      <div class="hint" id="status"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
