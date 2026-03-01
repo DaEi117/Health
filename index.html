@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HealthLog V1.6</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <h1>HealthLog V1.6</h1>
+      <div class="subtitle" id="subtitle"></div>
+    </div>
+    <nav class="nav">
+      <a class="navlink active" href="./index.html">Eintrag</a>
+      <a class="navlink" href="./stats.html">Statistik</a>
+      <a class="navlink" href="./categories.html">Kategorien</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <label class="label" for="date">Datum</label>
+        <input id="date" type="date" class="input" />
+      </div>
+
+      <!-- NEW: Sport/Alkohol -->
+      <div class="toggles">
+        <label class="toggle">
+          <input id="sportChk" type="checkbox" />
+          <span>Sportlich aktiv</span>
+        </label>
+        <label class="toggle">
+          <input id="alcoholChk" type="checkbox" />
+          <span>Alkohol konsumiert</span>
+        </label>
+      </div>
+
+      <div class="grid" id="symptomGrid" aria-live="polite"></div>
+
+      <!-- NEW: Medikamente -->
+      <div class="cardSub">
+        <div class="row rowTight">
+          <div class="labelLike">Medikamenteneinnahme</div>
+          <button id="toggleMedsEdit" class="btn">Liste bearbeiten</button>
+        </div>
+
+        <div id="medsBox" class="medsBox" aria-live="polite"></div>
+
+        <div id="medsEdit" class="medsEdit hidden">
+          <div class="row">
+            <label class="label" for="newMed">Neues Medikament</label>
+            <input id="newMed" class="input" placeholder="z.B. Cetirizin" />
+            <button id="addMedBtn" class="btn primary">Hinzufügen</button>
+          </div>
+          <div class="hint">Zum Löschen in der Liste auf „×“ tippen. Standardliste: Elotrans, Ibuprofen, Paracetamol, Reisetablette.</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="btn primary">Speichern</button>
+        <button id="deleteBtn" class="btn">Löschen</button>
+        <button id="resetBtn" class="btn">Auf 0 setzen</button>
+      </div>
+
+      <div class="hint" id="status"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
